@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurveyAI - Government Data Collection Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🤖 SurveyAI</h2>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-item btn--outline" data-section="landing">Home</button>
+                <button class="nav-item btn--outline" data-section="builder">Survey Builder</button>
+                <button class="nav-item btn--outline" data-section="deployment">Deployment</button>
+                <button class="nav-item btn--outline" data-section="sample">Take Survey</button>
+                <button class="nav-item btn--outline" data-section="supervisor">Dashboard</button>
+                <button class="nav-item btn--outline" data-section="paradata">Analytics</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <section id="landing" class="section active">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>AI-Powered Smart Survey Platform</h1>
+                    <p class="hero-subtitle">Revolutionizing government data collection with intelligent, multilingual, and adaptive survey technology</p>
+                    <div class="hero-actions">
+                        <button class="btn btn--primary btn--lg" data-section="builder">Start Building</button>
+                        <button class="btn btn--outline btn--lg" data-section="sample">Try Demo Survey</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features-grid container">
+            <div class="feature-card card">
+                <div class="card__body">
+                    <div class="feature-icon">🎯</div>
+                    <h3>No-Code Survey Builder</h3>
+                    <p>Create surveys with drag-and-drop interface or describe your needs to AI for instant question generation</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <div class="card__body">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Channel Deployment</h3>
+                    <p>Deploy surveys via WhatsApp, Voice/IVR, Mobile Apps, and AI Avatar interfaces</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <div class="card__body">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Multilingual Support</h3>
+                    <p>Support for 6+ Indian languages with AI-powered translation and voice interfaces</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <div class="card__body">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Adaptive Questioning</h3>
+                    <p>AI-powered dynamic question routing based on respondent behavior and answers</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <div class="card__body">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Live monitoring, quality validation, and comprehensive paradata collection</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <div class="card__body">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Data Pre-population</h3>
+                    <p>Auto-fill survey fields using Aadhaar, phone numbers, and government databases</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Survey Builder -->
+    <section id="builder" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>No-Code Survey Builder</h2>
+                <p>Create surveys using drag-and-drop interface or AI assistance</p>
+            </div>
+
+            <div class="builder-interface">
+                <div class="builder-sidebar">
+                    <h3>Question Bank</h3>
+                    <div class="question-types">
+                        <div class="question-type" draggable="true" data-type="multiple_choice">
+                            <span class="type-icon">🔘</span>
+                            Multiple Choice
+                        </div>
+                        <div class="question-type" draggable="true" data-type="text">
+                            <span class="type-icon">📝</span>
+                            Text Input
+                        </div>
+                        <div class="question-type" draggable="true" data-type="rating">
+                            <span class="type-icon">⭐</span>
+                            Rating Scale
+                        </div>
+                        <div class="question-type" draggable="true" data-type="number">
+                            <span class="type-icon">🔢</span>
+                            Number Input
+                        </div>
+                        <div class="question-type" draggable="true" data-type="date">
+                            <span class="type-icon">📅</span>
+                            Date Picker
+                        </div>
+                    </div>
+
+                    <div class="nss-questions">
+                        <h4>NSS Question Bank</h4>
+                        <div class="nss-question" draggable="true" data-question-id="nss_1">
+                            Household Income Source
+                        </div>
+                        <div class="nss-question" draggable="true" data-question-id="nss_2">
+                            Household Members
+                        </div>
+                        <div class="nss-question" draggable="true" data-question-id="nss_3">
+                            Education Level
+                        </div>
+                        <div class="nss-question" draggable="true" data-question-id="nss_4">
+                            Asset Ownership
+                        </div>
+                    </div>
+                </div>
+
+                <div class="builder-canvas">
+                    <div class="ai-prompt-section">
+                        <h3>AI Survey Generation</h3>
+                        <div class="form-group">
+                            <textarea class="form-control" id="ai-prompt" placeholder="Describe your survey needs... e.g., 'Create a survey about rural employment and digital literacy for farmers'"></textarea>
+                        </div>
+                        <button class="btn btn--primary" id="generate-ai-survey">Generate Survey with AI</button>
+                        <div class="ai-suggestions">
+                            <h4>AI Suggestions:</h4>
+                            <ul id="ai-suggestions-list">
+                                <li>Based on your survey objective, consider adding questions about digital payment adoption</li>
+                                <li>For better data quality, add validation rules for income ranges</li>
+                                <li>Consider using skip logic to reduce survey length for elderly respondents</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="survey-canvas" id="survey-canvas">
+                        <div class="canvas-placeholder">
+                            <p>Drag questions here or use AI to generate survey</p>
+                        </div>
+                    </div>
+
+                    <div class="builder-actions">
+                        <button class="btn btn--outline" id="preview-survey">Preview Survey</button>
+                        <button class="btn btn--secondary" id="save-survey">Save Survey</button>
+                        <button class="btn btn--primary" id="deploy-survey">Deploy Survey</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Channel Deployment -->
+    <section id="deployment" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Multi-Channel Deployment Dashboard</h2>
+                <p>Configure and deploy surveys across multiple channels</p>
+            </div>
+
+            <div class="deployment-channels">
+                <div class="channel-card card">
+                    <div class="card__body">
+                        <div class="channel-header">
+                            <h3>📱 WhatsApp Survey</h3>
+                            <div class="status status--success">Active</div>
+                        </div>
+                        <p>Deploy conversational surveys through WhatsApp Business API</p>
+                        <div class="channel-stats">
+                            <span>Sent: 1,247 | Completed: 892</span>
+                        </div>
+                        <button class="btn btn--primary" id="config-whatsapp">Configure WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="channel-card card">
+                    <div class="card__body">
+                        <div class="channel-header">
+                            <h3>📞 Voice/IVR Survey</h3>
+                            <div class="status status--info">Setup Required</div>
+                        </div>
+                        <p>Automated voice surveys for rural and low-literacy populations</p>
+                        <div class="channel-stats">
+                            <span>Calls: 0 | Completed: 0</span>
+                        </div>
+                        <button class="btn btn--outline" id="config-ivr">Setup IVR</button>
+                    </div>
+                </div>
+
+                <div class="channel-card card">
+                    <div class="card__body">
+                        <div class="channel-header">
+                            <h3>📲 Mobile App</h3>
+                            <div class="status status--success">Active</div>
+                        </div>
+                        <p>Native mobile app for enumerators and respondents</p>
+                        <div class="channel-stats">
+                            <span>Downloads: 156 | Active: 89</span>
+                        </div>
+                        <button class="btn btn--primary" id="config-mobile">Configure App</button>
+                    </div>
+                </div>
+
+                <div class="channel-card card">
+                    <div class="card__body">
+                        <div class="channel-header">
+                            <h3>🤖 AI Avatar Chat</h3>
+                            <div class="status status--warning">Beta</div>
+                        </div>
+                        <p>Interactive AI avatar for engaging survey experience</p>
+                        <div class="channel-stats">
+                            <span>Sessions: 45 | Completed: 32</span>
+                        </div>
+                        <button class="btn btn--secondary" id="config-avatar">Setup Avatar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deployment-status">
+                <h3>Deployment Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <h4>HCES 2024</h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 62%"></div>
+                        </div>
+                        <span>1,247 / 2,000 responses</span>
+                    </div>
+                    <div class="status-item">
+                        <h4>PLFS 2024</h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 59%"></div>
+                        </div>
+                        <span>892 / 1,500 responses</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Survey Experience -->
+    <section id="sample" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sample Survey Experience</h2>
+                <p>Experience how respondents interact with surveys across different channels</p>
+            </div>
+
+            <div class="survey-channels">
+                <div class="channel-tabs">
+                    <button class="channel-tab active" data-channel="whatsapp">WhatsApp</button>
+                    <button class="channel-tab" data-channel="voice">Voice/IVR</button>
+                    <button class="channel-tab" data-channel="mobile">Mobile App</button>
+                    <button class="channel-tab" data-channel="avatar">AI Avatar</button>
+                </div>
+
+                <!-- WhatsApp Channel -->
+                <div class="channel-content active" id="whatsapp-channel">
+                    <div class="whatsapp-interface">
+                        <div class="whatsapp-header">
+                            <span>📱 WhatsApp Survey - SurveyAI Bot</span>
+                        </div>
+                        <div class="whatsapp-messages" id="whatsapp-messages">
+                            <div class="message bot-message">
+                                <p>🙏 Welcome to the Household Survey! I'll ask you a few questions. This will take about 5 minutes.</p>
+                            </div>
+                            <div class="message bot-message">
+                                <p>What is your household's primary source of income?</p>
+                                <div class="message-options">
+                                    <button class="option-btn" data-answer="Agriculture">1. Agriculture</button>
+                                    <button class="option-btn" data-answer="Business">2. Business</button>
+                                    <button class="option-btn" data-answer="Salary/Wages">3. Salary/Wages</button>
+                                    <button class="option-btn" data-answer="Other">4. Other</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="whatsapp-input">
+                            <input type="text" placeholder="Type your response..." disabled>
+                            <button class="btn btn--primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice/IVR Channel -->
+                <div class="channel-content" id="voice-channel">
+                    <div class="voice-interface">
+                        <div class="voice-player">
+                            <div class="voice-icon">🔊</div>
+                            <p id="voice-text">Welcome to the household survey. Press 1 to continue in English, or 2 for Hindi.</p>
+                            <div class="voice-controls">
+                                <button class="btn btn--primary" id="play-voice">▶ Play</button>
+                                <button class="btn btn--outline" id="pause-voice">⏸ Pause</button>
+                            </div>
+                        </div>
+                        <div class="dtmf-keypad">
+                            <h4>Press keys to respond:</h4>
+                            <div class="keypad">
+                                <button class="keypad-btn" data-key="1">1</button>
+                                <button class="keypad-btn" data-key="2">2</button>
+                                <button class="keypad-btn" data-key="3">3</button>
+                                <button class="keypad-btn" data-key="4">4</button>
+                                <button class="keypad-btn" data-key="5">5</button>
+                                <button class="keypad-btn" data-key="6">6</button>
+                                <button class="keypad-btn" data-key="*">*</button>
+                                <button class="keypad-btn" data-key="0">0</button>
+                                <button class="keypad-btn" data-key="#">#</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile App Channel -->
+                <div class="channel-content" id="mobile-channel">
+                    <div class="mobile-interface">
+                        <div class="mobile-header">
+                            <span>SurveyAI Mobile</span>
+                            <div class="progress-indicator">
+                                <span>Question 1 of 5</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-content">
+                            <h3>How many members are there in your household?</h3>
+                            <input type="number" class="form-control" id="household-members" min="1" max="20" placeholder="Enter number">
+                            <div class="mobile-actions">
+                                <button class="btn btn--outline">Previous</button>
+                                <button class="btn btn--primary" id="mobile-next">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Avatar Channel -->
+                <div class="channel-content" id="avatar-channel">
+                    <div class="avatar-interface">
+                        <div class="avatar-video">
+                            <div class="avatar-placeholder">
+                                <div class="avatar-icon">👨‍💼</div>
+                                <p>AI Survey Assistant</p>
+                            </div>
+                        </div>
+                        <div class="avatar-chat">
+                            <div class="avatar-message">
+                                <p>Hello! I'm your AI survey assistant. I'll help you complete this survey in a conversational way. What language would you prefer?</p>
+                            </div>
+                            <div class="language-selector">
+                                <button class="lang-btn" data-lang="en">English</button>
+                                <button class="lang-btn" data-lang="hi">हिंदी</button>
+                                <button class="lang-btn" data-lang="te">తెలుగు</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="language-features">
+                <h3>Multilingual Support</h3>
+                <div class="language-grid">
+                    <div class="language-card" data-lang="en">
+                        <h4>English</h4>
+                        <p>What is your household's primary source of income?</p>
+                        <button class="btn btn--outline btn--sm">🔊 Listen</button>
+                    </div>
+                    <div class="language-card" data-lang="hi">
+                        <h4>हिंदी (Hindi)</h4>
+                        <p>आपके परिवार की आय का मुख्य स्रोत क्या है?</p>
+                        <button class="btn btn--outline btn--sm">🔊 सुनें</button>
+                    </div>
+                    <div class="language-card" data-lang="te">
+                        <h4>తెలుగు (Telugu)</h4>
+                        <p>మీ కుటుంబం యొక్క ప్రాథమిక ఆదాయ వనరు ఏమిటి?</p>
+                        <button class="btn btn--outline btn--sm">🔊 వినండి</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supervisor Dashboard -->
+    <section id="supervisor" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Supervisor Monitoring Dashboard</h2>
+                <p>Real-time overview of survey progress and data quality</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card card">
+                    <div class="card__body">
+                        <h3>Survey Progress</h3>
+                        <div class="progress-chart">
+                            <canvas id="progressChart" style="height: 200px; position: relative;"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card card">
+                    <div class="card__body">
+                        <h3>Quality Metrics</h3>
+                        <div class="metrics-list">
+                            <div class="metric-item">
+                                <span>Response Rate</span>
+                                <div class="metric-value status--success">87.3%</div>
+                            </div>
+                            <div class="metric-item">
+                                <span>Data Completeness</span>
+                                <div class="metric-value status--success">94.2%</div>
+                            </div>
+                            <div class="metric-item">
+                                <span>Validation Errors</span>
+                                <div class="metric-value status--success">2.1%</div>
+                            </div>
+                            <div class="metric-item">
+                                <span>Avg Duration</span>
+                                <div class="metric-value status--success">13.2 min</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card card">
+                    <div class="card__body">
+                        <h3>Enumerator Performance</h3>
+                        <div class="enumerator-list">
+                            <div class="enumerator-item">
+                                <div class="enumerator-info">
+                                    <strong>Rajesh Kumar</strong>
+                                    <span class="location">Delhi</span>
+                                </div>
+                                <div class="enumerator-stats">
+                                    <span>45 completed</span>
+                                    <div class="status status--success">92% quality</div>
+                                </div>
+                            </div>
+                            <div class="enumerator-item">
+                                <div class="enumerator-info">
+                                    <strong>Priya Sharma</strong>
+                                    <span class="location">Mumbai</span>
+                                </div>
+                                <div class="enumerator-stats">
+                                    <span>38 completed</span>
+                                    <div class="status status--success">88% quality</div>
+                                </div>
+                            </div>
+                            <div class="enumerator-item">
+                                <div class="enumerator-info">
+                                    <strong>Amit Singh</strong>
+                                    <span class="location">Kolkata</span>
+                                </div>
+                                <div class="enumerator-stats">
+                                    <span>52 completed</span>
+                                    <div class="status status--success">95% quality</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card card">
+                    <div class="card__body">
+                        <h3>Real-time Alerts</h3>
+                        <div class="alerts-list">
+                            <div class="alert alert-warning">
+                                <strong>Data Quality Alert</strong>
+                                <p>Unusual response pattern detected in Region 5</p>
+                                <span class="alert-time">2 minutes ago</span>
+                            </div>
+                            <div class="alert alert-success">
+                                <strong>Milestone Reached</strong>
+                                <p>HCES 2024 survey reached 60% completion</p>
+                                <span class="alert-time">15 minutes ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="validation-dashboard">
+                <h3>Real-time Validation Dashboard</h3>
+                <div class="validation-grid">
+                    <div class="validation-card card">
+                        <div class="card__body">
+                            <h4>Validation Rules</h4>
+                            <div class="validation-rules">
+                                <div class="rule-item">
+                                    <span class="rule-name">Income Range Check</span>
+                                    <div class="status status--success">Active</div>
+                                </div>
+                                <div class="rule-item">
+                                    <span class="rule-name">Age Consistency</span>
+                                    <div class="status status--success">Active</div>
+                                </div>
+                                <div class="rule-item">
+                                    <span class="rule-name">Geographic Bounds</span>
+                                    <div class="status status--warning">Warning</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="validation-card card">
+                        <div class="card__body">
+                            <h4>Auto-coding Results</h4>
+                            <div class="coding-results">
+                                <p><strong>Text Response:</strong> "I work in software development"</p>
+                                <p><strong>Auto-coded as:</strong> <span class="status status--success">Professional/Technical</span></p>
+                                <p><strong>Confidence:</strong> 92%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paradata Analytics -->
+    <section id="paradata" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Paradata Collection & Analytics</h2>
+                <p>Comprehensive metadata analysis for quality assurance</p>
+            </div>
+
+            <div class="paradata-grid">
+                <div class="paradata-card card">
+                    <div class="card__body">
+                        <h3>Response Time Analysis</h3>
+                        <canvas id="responseTimeChart" style="height: 250px; position: relative;"></canvas>
+                    </div>
+                </div>
+
+                <div class="paradata-card card">
+                    <div class="card__body">
+                        <h3>Geographic Distribution</h3>
+                        <div class="map-placeholder">
+                            <div class="map-point" style="top: 20%; left: 30%;" data-location="Delhi">📍</div>
+                            <div class="map-point" style="top: 45%; left: 25%;" data-location="Mumbai">📍</div>
+                            <div class="map-point" style="top: 35%; left: 70%;" data-location="Kolkata">📍</div>
+                            <div class="map-point" style="top: 70%; left: 35%;" data-location="Chennai">📍</div>
+                        </div>
+                        <div class="location-stats">
+                            <div class="location-item">Delhi: 45 surveys</div>
+                            <div class="location-item">Mumbai: 38 surveys</div>
+                            <div class="location-item">Kolkata: 52 surveys</div>
+                            <div class="location-item">Chennai: 41 surveys</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="paradata-card card">
+                    <div class="card__body">
+                        <h3>Device & Platform Analytics</h3>
+                        <canvas id="deviceChart" style="height: 200px; position: relative;"></canvas>
+                    </div>
+                </div>
+
+                <div class="paradata-card card">
+                    <div class="card__body">
+                        <h3>Quality Indicators</h3>
+                        <div class="quality-indicators">
+                            <div class="indicator-item">
+                                <span>Survey Completion Rate</span>
+                                <div class="indicator-bar">
+                                    <div class="indicator-fill" style="width: 87%"></div>
+                                </div>
+                                <span>87%</span>
+                            </div>
+                            <div class="indicator-item">
+                                <span>Average Response Time</span>
+                                <div class="indicator-bar">
+                                    <div class="indicator-fill" style="width: 70%"></div>
+                                </div>
+                                <span>13.2 min</span>
+                            </div>
+                            <div class="indicator-item">
+                                <span>Data Accuracy Score</span>
+                                <div class="indicator-bar">
+                                    <div class="indicator-fill" style="width: 94%"></div>
+                                </div>
+                                <span>94%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="anomaly-detection">
+                <h3>Anomaly Detection</h3>
+                <div class="anomaly-grid">
+                    <div class="anomaly-card card">
+                        <div class="card__body">
+                            <div class="anomaly-header">
+                                <span class="status status--warning">Potential Issue</span>
+                                <span class="anomaly-time">10:15 AM</span>
+                            </div>
+                            <p><strong>Unusually fast completion</strong></p>
+                            <p>Enumerator enum_003 completed survey in 2.5 minutes (avg: 13.2 min)</p>
+                            <button class="btn btn--outline btn--sm">Investigate</button>
+                        </div>
+                    </div>
+                    <div class="anomaly-card card">
+                        <div class="card__body">
+                            <div class="anomaly-header">
+                                <span class="status status--error">High Priority</span>
+                                <span class="anomaly-time">09:45 AM</span>
+                            </div>
+                            <p><strong>GPS location mismatch</strong></p>
+                            <p>Survey marked as rural but GPS shows urban coordinates</p>
+                            <button class="btn btn--outline btn--sm">Review</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Pre-population Modal -->
+    <div class="modal hidden" id="prepopulation-modal">
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Data Pre-population Demo</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Enter Unique Identifier</label>
+                        <select class="form-control" id="identifier-type">
+                            <option value="aadhaar">Aadhaar Number</option>
+                            <option value="phone">Phone Number</option>
+                            <option value="household">Household ID</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Identifier Value</label>
+                        <input type="text" class="form-control" id="identifier-value" placeholder="Enter identifier">
+                    </div>
+                    <button class="btn btn--primary" id="fetch-data">Fetch Pre-population Data</button>
+                    
+                    <div class="prepopulated-data hidden" id="prepopulated-data">
+                        <h4>Pre-populated Fields:</h4>
+                        <div class="data-field">
+                            <strong>Name:</strong> <span id="prep-name">Rajesh Kumar</span>
+                        </div>
+                        <div class="data-field">
+                            <strong>Address:</strong> <span id="prep-address">123 Main Street, Delhi</span>
+                        </div>
+                        <div class="data-field">
+                            <strong>Family Size:</strong> <span id="prep-family">4 members</span>
+                        </div>
+                        <div class="data-field">
+                            <strong>Primary Income:</strong> <span id="prep-income">Government Employee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adaptive Questioning Demo Modal -->
+    <div class="modal hidden" id="adaptive-modal">
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>AI Adaptive Questioning Demo</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="adaptive-demo">
+                        <div class="decision-tree">
+                            <h4>AI Decision Tree Visualization</h4>
+                            <div class="tree-node">
+                                <div class="node active">Age Group</div>
+                                <div class="node-branches">
+                                    <div class="branch">
+                                        <span class="branch-label">18-35</span>
+                                        <div class="node">Digital Literacy Questions</div>
+                                    </div>
+                                    <div class="branch">
+                                        <span class="branch-label">35-60</span>
+                                        <div class="node">Employment Focus</div>
+                                    </div>
+                                    <div class="branch">
+                                        <span class="branch-label">60+</span>
+                                        <div class="node">Health & Welfare</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="personality-assessment">
+                            <h4>AI Personality Assessment</h4>
+                            <p>Based on response patterns, AI has identified:</p>
+                            <div class="personality-traits">
+                                <span class="trait">Detail-oriented</span>
+                                <span class="trait">Technology-savvy</span>
+                                <span class="trait">Time-conscious</span>
+                            </div>
+                            <p><strong>Recommended approach:</strong> Concise questions with clear technical terms</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
