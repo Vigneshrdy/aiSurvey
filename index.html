@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Orange, Green & Blue Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+         :root {
+            /* Color Variables */
+            --orange-primary: #FF7F3E;
+            --orange-light: #FFAA71;
+            --orange-dark: #E55D1A;
+            --green-primary: #2E8B57;
+            --green-light: #5FBA92;
+            --green-dark: #1C6B42;
+            --blue-primary: #1E90FF;
+            --blue-light: #6BB5FF;
+            --blue-dark: #0066CC;
+            --neutral-light: #F8F9FA;
+            --neutral-dark: #212529;
+            --text-dark: #333333;
+            --text-light: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--neutral-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header Styles */
+        
+        header {
+            background: linear-gradient(135deg, var(--blue-primary) 0%, var(--green-primary) 100%);
+            color: var(--text-light);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--orange-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 25px;
+        }
+        
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        nav a:hover,
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        /* Hero Section */
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(rgba(30, 144, 255, 0.9), rgba(46, 139, 87, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 0L100 100" stroke="%23e9ecef" stroke-width="2"/><path d="M100 0L0 100" stroke="%23e9ecef" stroke-width="2"/></svg>');
+            background-size: cover;
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin: 0 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--orange-primary);
+            color: var(--text-light);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--orange-dark);
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--text-light);
+            color: var(--blue-primary);
+        }
+        /* Features Section */
+        
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--blue-dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+        
+        .feature-card:nth-child(1) .feature-icon {
+            background-color: var(--blue-light);
+            color: var(--blue-dark);
+        }
+        
+        .feature-card:nth-child(2) .feature-icon {
+            background-color: var(--green-light);
+            color: var(--green-dark);
+        }
+        
+        .feature-card:nth-child(3) .feature-icon {
+            background-color: var(--orange-light);
+            color: var(--orange-dark);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        /* Stats Section */
+        
+        .stats {
+            background: linear-gradient(135deg, var(--orange-primary) 0%, var(--blue-primary) 100%);
+            padding: 60px 0;
+            color: var(--text-light);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        /* Pricing Section */
+        
+        .pricing {
+            padding: 80px 0;
+            background-color: var(--neutral-light);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .pricing-header {
+            padding: 30px;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .pricing-card:nth-child(1) .pricing-header {
+            background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-dark) 100%);
+        }
+        
+        .pricing-card:nth-child(2) .pricing-header {
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+        }
+        
+        .pricing-card:nth-child(3) .pricing-header {
+            background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-dark) 100%);
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .pricing-features {
+            padding: 30px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li i {
+            margin-right: 10px;
+            color: var(--green-primary);
+        }
+        
+        .pricing-cta {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+        /* Testimonials */
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--neutral-light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text:before {
+            content: """;
+ font-size: 4rem;
+            color: var(--orange-light);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--blue-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+            color: var(--blue-dark);
+        }
+        /* Contact Section */
+        
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--blue-primary) 100%);
+            color: var(--text-light);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            background-color: var(--orange-primary);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .contact-form button:hover {
+            background-color: var(--orange-dark);
+        }
+        /* Footer */
+        
+        footer {
+            background-color: var(--neutral-dark);
+            color: var(--text-light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--orange-light);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--orange-primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            nav li {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-palette"></i> ColorDesign
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Modern Design with Orange, Green & Blue</h1>
+            <p>A clean and professional color scheme that enhances user experience and creates visual harmony</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="#" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Features</h2>
+                <p>Discover the powerful features that make our design system stand out from the competition</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Color Harmony</h3>
+                    <p>Carefully selected orange, green and blue palette that creates visual harmony and enhances user experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Fully Responsive</h3>
+                    <p>Looks great on any device - desktop, tablet, or mobile. Our design adapts to all screen sizes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Fast Performance</h3>
+                    <p>Optimized for speed and performance. Quick loading times and smooth animations enhance user experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Faster Loading</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pricing Plans</h2>
+                <p>Choose the plan that works best for your needs and budget</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">$19<span>/month</span></div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Responsive Design</li>
+                            <li><i class="fas fa-check"></i> Basic Color Options</li>
+                            <li><i class="fas fa-check"></i> 5 Page Website</li>
+                            <li><i class="fas fa-check"></i> 1 GB Storage</li>
+                            <li><i class="fas fa-check"></i> Email Support</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="pricing-price">$49<span>/month</span></div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Advanced Design</li>
+                            <li><i class="fas fa-check"></i> Full Color Customization</li>
+                            <li><i class="fas fa-check"></i> 20 Page Website</li>
+                            <li><i class="fas fa-check"></i> 10 GB Storage</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="pricing-price">$99<span>/month</span></div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Premium Design</li>
+                            <li><i class="fas fa-check"></i> Unlimited Color Options</li>
+                            <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                            <li><i class="fas fa-check"></i> 50 GB Storage</li>
+                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from our satisfied clients who have experienced the power of our design system</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The orange, green and blue color scheme completely transformed our website. We've seen a 40% increase in user engagement since the redesign.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-details">
+                            <h4>Sarah Johnson</h4>
+                            <p>Marketing Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The clean design and thoughtful color combinations have made our application not only beautiful but also more intuitive to use.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-details">
+                            <h4>Michael Chen</h4>
+                            <p>Product Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        I was skeptical about the color combination at first, but the results speak for themselves. Our conversion rates have never been higher!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-details">
+                            <h4>Emily Rodriguez</h4>
+                            <p>E-commerce Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Have questions or want to get started? Reach out to us today!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>123 Design Street, Creative City</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@colordesign.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>ColorDesign</h4>
+                    <p>Creating beautiful, functional designs with carefully selected color palettes that enhance user experience and engagement.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter to get updates on our latest projects and promotions.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ColorDesign. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for navigation active state
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
